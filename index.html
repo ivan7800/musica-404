@@ -1,0 +1,1458 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>RAVE GRID 404 PRO</title>
+<style>
+:root{
+  --bg:#07080d;--panel:#11131c;--panel2:#171a26;--panel3:#202435;--line:#30364d;
+  --text:#eef3ff;--muted:#8f98b8;--cyan:#00eaff;--pink:#ff2a7d;--amber:#ffbd38;--green:#6dff9d;--red:#ff5a66;
+  --shadow:0 24px 70px rgba(0,0,0,.55);--radius:18px;
+}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:radial-gradient(circle at 20% 0%,#172044 0%,transparent 34%),radial-gradient(circle at 100% 10%,#3b0b2a 0%,transparent 32%),linear-gradient(180deg,#05060a,#0a0b10 55%,#05060a);color:var(--text);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(rgba(255,255,255,.025) 50%,rgba(0,0,0,.04) 50%);background-size:100% 4px;mix-blend-mode:screen;opacity:.45;z-index:4}
+.wrap{width:min(1280px,calc(100% - 28px));margin:18px auto 40px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin-bottom:16px}
+.brand,.quick{background:rgba(17,19,28,.82);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(14px)}
+.brand{padding:22px 24px}
+.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+.brand h1{font-size:clamp(28px,5vw,60px);line-height:.92;margin:10px 0 10px;letter-spacing:-.06em;text-shadow:0 0 22px rgba(0,234,255,.22)}
+.brand p{margin:0;color:var(--muted);max-width:780px;line-height:1.5}
+.quick{padding:18px;display:grid;gap:12px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.step{background:var(--panel2);border:1px solid #29304a;border-radius:14px;padding:12px}
+.step b{display:block;color:var(--amber);font-size:12px;margin-bottom:5px}
+.step span{font-size:12px;color:var(--muted);line-height:1.35}
+/* Layout */
+.app{display:grid;grid-template-columns:260px 1fr;gap:16px}
+.side,.main{background:rgba(17,19,28,.9);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(14px)}
+.side{padding:16px;position:sticky;top:14px;height:max-content}
+.main{padding:16px;min-width:0}
+.section-title{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.16em;margin:0 0 10px}
+/* Buttons */
+.btn{appearance:none;border:1px solid #38405d;background:linear-gradient(180deg,#252a3c,#171b29);color:var(--text);border-radius:12px;padding:10px 12px;font-weight:800;letter-spacing:.03em;cursor:pointer;font-family:inherit;font-size:12px;box-shadow:inset 0 1px rgba(255,255,255,.08);transition:.12s transform,.12s border,.12s filter;user-select:none}
+.btn:hover{border-color:var(--cyan);filter:brightness(1.08)}
+.btn:active{transform:translateY(1px)}
+.btn.big{font-size:18px;padding:16px;border-radius:16px;background:linear-gradient(180deg,#10edff,#008fa5);color:#001014;border-color:#62f6ff;text-shadow:0 1px rgba(255,255,255,.35)}
+.btn.stop{background:linear-gradient(180deg,#ff4b8e,#b30042);color:white;border-color:#ff7aab}
+.btn.pink{border-color:#793154;color:#ffd8e8}
+.btn.amber{border-color:#6a5522;color:#ffe5a7}
+.btn.green{border-color:#2c6b43;color:#ceffd8}
+.btn.ghost{background:#10131d}
+.btn.loop-on{background:linear-gradient(180deg,#6dff9d,#1a8a44);color:#001a0b;border-color:#6dff9d}
+.btn.sample-on{background:linear-gradient(180deg,#ffbd38,#8a5a00);color:#1a0f00;border-color:#ffbd38}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid1{display:grid;gap:8px}
+/* Transport */
+.transport{display:grid;gap:10px;margin-bottom:18px}
+.readout{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.meter{background:#080a10;border:1px solid #252b42;border-radius:14px;padding:10px}
+.meter small{display:block;color:var(--muted);font-size:10px}
+.meter strong{font-size:17px;color:var(--cyan)}
+/* Controls */
+.control{background:var(--panel2);border:1px solid #29304a;border-radius:14px;padding:10px;margin-bottom:7px}
+.control label{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:6px}
+.control output{color:var(--text)}
+input[type=range]{width:100%;accent-color:var(--cyan);margin:0}
+input[type=number],input[type=text],select{width:100%;background:#090b12;border:1px solid #313852;color:var(--text);border-radius:10px;padding:8px;font-family:inherit;font-size:12px}
+.topbar{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;margin-bottom:14px}
+.panel{background:var(--panel2);border:1px solid #29304a;border-radius:16px;padding:14px;margin-bottom:14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{min-width:40px}
+.tab.active{background:linear-gradient(180deg,#ff408c,#ad003c);border-color:#ff77af}
+.mode.active{background:linear-gradient(180deg,#ffcc54,#aa7414);color:#130d00;border-color:#ffe08b}
+/* Sequencer */
+.sequencer{overflow:auto;border-radius:14px;border:1px solid #252b42;background:#090b12}
+.seq-head,.seq-row{display:grid;gap:3px;align-items:center;width:max-content;min-width:100%;padding:5px}
+.seq-head{position:sticky;top:0;background:#0f121b;z-index:2}
+.seq-head div{height:20px;text-align:center;color:#6f7897;font-size:10px;padding-top:3px}
+.seq-head div.beat-head{color:var(--amber)}
+/* Track label — wider for sample UI */
+.trackname{height:52px;display:flex;flex-direction:column;justify-content:center;gap:4px;color:#cbd4ee;font-weight:800;font-size:11px;padding:0 8px;background:#121724;border:1px solid #252b42;border-radius:10px;min-width:160px}
+.trackname-top{display:flex;align-items:center;justify-content:space-between}
+.trackname em{font-style:normal;color:#69728e;font-size:10px}
+.sample-bar{display:flex;gap:4px;align-items:center}
+.sample-name{font-size:9px;color:var(--amber);max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-xs{padding:3px 6px;border-radius:6px;font-size:9px;font-weight:800;border:1px solid #38405d;background:#181d2e;color:var(--muted);cursor:pointer;font-family:inherit}
+.btn-xs:hover{border-color:var(--amber);color:var(--amber)}
+.btn-xs.active{border-color:var(--amber);color:var(--amber);background:#2a1e00}
+/* Steps length selector */
+.steps-sel{display:flex;gap:3px}
+.steps-sel button{padding:2px 5px;border-radius:5px;font-size:9px;font-weight:800;border:1px solid #29304a;background:#0d1020;color:var(--muted);cursor:pointer;font-family:inherit}
+.steps-sel button.active{background:var(--cyan);color:#001014;border-color:var(--cyan)}
+/* Cells */
+.cell{width:38px;height:38px;border-radius:9px;background:#151a28;border:1px solid #252b42;cursor:pointer;position:relative;transition:.05s background,.05s border;flex-shrink:0}
+.cell.beat{background:#1d2335}
+.cell.on{background:linear-gradient(180deg,#00f0ff,#008fa7);border-color:#8ff8ff;box-shadow:0 0 12px rgba(0,234,255,.22),inset 0 1px rgba(255,255,255,.4)}
+.cell.accent{background:linear-gradient(180deg,#ffe16c,#ff8e00);border-color:#ffd36f}
+.cell.play{outline:3px solid rgba(255,255,255,.9);outline-offset:-3px}
+.cell.inactive{opacity:.25;pointer-events:none}  /* beyond track's stepCount */
+.cell.note:after{content:attr(data-note);position:absolute;right:3px;bottom:2px;font-size:8px;color:#001014;font-weight:900}
+/* Drag-over highlight for sample drop */
+.trackname.drag-over{border-color:var(--amber);background:#221800}
+/* Note picker */
+.note-picker{position:fixed;background:#11131e;border:1px solid var(--cyan);border-radius:14px;padding:10px;z-index:200;display:grid;grid-template-columns:repeat(4,1fr);gap:5px;box-shadow:0 8px 40px rgba(0,0,0,.8)}
+.note-picker button{padding:6px 3px;border-radius:7px;border:1px solid #30364d;background:#1a1f30;color:var(--text);cursor:pointer;font-size:10px;font-weight:700;font-family:inherit}
+.note-picker button:hover{background:var(--cyan);color:#001014;border-color:var(--cyan)}
+.note-picker button.active-note{background:var(--pink);color:#fff;border-color:var(--pink)}
+/* Timeline */
+.timeline{display:grid;grid-template-columns:repeat(16,minmax(50px,1fr));gap:6px}
+.bar{background:#10131d;border:1px solid #29304a;border-radius:14px;padding:8px 5px;text-align:center;cursor:pointer;min-height:66px;user-select:none}
+.bar small{display:block;color:#727c9b;font-size:9px}
+.bar b{display:block;font-size:20px;margin:5px 0;color:var(--cyan)}
+.bar span{font-size:9px;color:var(--muted)}
+.bar.now{border-color:var(--amber);box-shadow:0 0 0 2px rgba(255,189,56,.2),0 0 18px rgba(255,189,56,.16)}
+.bar.now b{color:var(--amber)}
+/* Mixer */
+.mixer{display:grid;grid-template-columns:repeat(8,1fr);gap:7px}
+.chan{background:#10131d;border:1px solid #29304a;border-radius:14px;padding:9px}
+.chan h4{margin:0 0 7px;font-size:11px;color:#dce5ff}
+.mini{display:flex;gap:4px;margin-top:7px}
+.mini button{flex:1;padding:6px;border-radius:8px;border:1px solid #343c58;background:#161b2b;color:#8791ad;cursor:pointer;font-weight:800;font-size:10px;font-family:inherit}
+.mini button.on{color:#060810;background:var(--green);border-color:var(--green)}
+.mini button.solo-on{color:#060810;background:var(--amber);border-color:var(--amber)}
+/* Export */
+.footer-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.status{margin-top:10px;color:var(--muted);font-size:11px;line-height:1.4;min-height:18px}
+.status.ok{color:var(--green)}
+.status.err{color:var(--red)}
+.hidden{display:none}
+.help{font-size:11px;color:var(--muted);line-height:1.55}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border:1px solid #323a58;border-radius:999px;background:#0b0e16;color:#aeb8da;font-size:10px;margin:2px}
+.pro-badge{display:inline-block;border:1px solid rgba(0,234,255,.55);color:var(--cyan);border-radius:999px;padding:3px 8px;font-size:10px;margin-left:8px;vertical-align:middle}
+::-webkit-scrollbar{height:9px;width:9px}
+::-webkit-scrollbar-thumb{background:#30364d;border-radius:999px}
+@media(max-width:960px){
+  .hero,.app,.topbar{grid-template-columns:1fr}
+  .side{position:static}
+  .mixer{grid-template-columns:repeat(4,1fr)}
+  .footer-actions{grid-template-columns:1fr 1fr}
+  .timeline{grid-template-columns:repeat(4,1fr)}
+  .steps{grid-template-columns:1fr}
+  .wrap{width:calc(100% - 16px)}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="brand">
+      <div class="eyebrow">browser music workstation · phase 2</div>
+      <h1>RAVE GRID 404 <span class="pro-badge">PRO</span></h1>
+      <p>Secuenciador por bloques inspirado en Music 2000 PSX. 8 pistas, samples propios, steps variables, síntesis procedural + tus archivos de audio.</p>
+    </div>
+    <div class="quick">
+      <div class="section-title">Flujo rápido</div>
+      <div class="steps">
+        <div class="step"><b>1. Preset o sample</b><span>Carga un estilo o arrastra tu propio .wav/.mp3 sobre cualquier pista.</span></div>
+        <div class="step"><b>2. Play + edita</b><span>Activa celdas en vivo. Cambia la longitud de pasos por pista (8/16/32).</span></div>
+        <div class="step"><b>3. Exporta</b><span>WAV, MIDI, stems separados o JSON con samples embebidos.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app">
+    <aside class="side">
+      <div class="transport">
+        <button id="playBtn" class="btn big">▶ PLAY</button>
+        <div class="grid2">
+          <button id="modeBtn" class="btn mode">MODO: PATRÓN</button>
+          <button id="loopBtn" class="btn">LOOP: OFF</button>
+        </div>
+        <div class="readout">
+          <div class="meter"><small>BPM</small><strong id="bpmView">128</strong></div>
+          <div class="meter"><small>Patrón / Bar</small><strong id="patternView">A / 1</strong></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="section-title">Estilos demo</div>
+        <div class="grid2">
+          <button class="btn pink preset" data-preset="techno">TECHNO</button>
+          <button class="btn preset" data-preset="ambient">AMBIENT</button>
+          <button class="btn amber preset" data-preset="horror">HORROR</button>
+          <button class="btn green preset" data-preset="dnb">DNB</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="section-title">Master</div>
+        <div class="control"><label>Tempo <output id="bpmOut">128 bpm</output></label><input id="bpm" type="range" min="60" max="200" value="128"></div>
+        <div class="control"><label>Swing <output id="swingOut">0%</output></label><input id="swing" type="range" min="0" max="55" value="0"></div>
+        <div class="control"><label>Cutoff <output id="cutoffOut">15000 Hz</output></label><input id="cutoff" type="range" min="200" max="15000" value="15000"></div>
+        <div class="control"><label>Resonancia <output id="resOut">1</output></label><input id="res" type="range" min="0.5" max="18" step="0.5" value="1"></div>
+        <div class="control"><label>Drive <output id="driveOut">0.3</output></label><input id="drive" type="range" min="0" max="1.5" step="0.05" value="0.3"></div>
+      </div>
+
+      <div class="panel">
+        <div class="section-title">Acciones creativas</div>
+        <div class="grid1">
+          <button id="mutate" class="btn">MUTATE</button>
+          <button id="humanize" class="btn">HUMANIZE</button>
+          <button id="clearPattern" class="btn ghost">LIMPIAR PATRÓN</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="panel" style="margin:0">
+          <div class="section-title">Patrones</div>
+          <div id="patterns" class="tabs"></div>
+        </div>
+        <div class="panel" style="margin:0;min-width:260px">
+          <div class="section-title">Proyecto</div>
+          <input id="projectName" type="text" value="Untitled Rave"/>
+        </div>
+      </div>
+
+      <section class="panel">
+        <div class="section-title">Pattern Lab — arrastra samples sobre la pista · clic derecho nota en melodic</div>
+        <div class="sequencer" id="sequencer"></div>
+        <div class="status" id="status">Listo. Carga un preset o arrastra samples.</div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">Song Arranger — clic: avanzar patrón · clic derecho: retroceder · doble clic: vaciar</div>
+        <div id="timeline" class="timeline"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">Mixer</div>
+        <div id="mixer" class="mixer"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">Exportar / Guardar</div>
+        <div class="footer-actions">
+          <button id="save" class="btn">GUARDAR</button>
+          <button id="load" class="btn">CARGAR</button>
+          <button id="exportJson" class="btn">EXPORT JSON</button>
+          <button id="importJsonBtn" class="btn">IMPORT JSON</button>
+          <button id="exportWav" class="btn pink">EXPORT WAV</button>
+          <button id="exportMidi" class="btn amber">EXPORT MIDI</button>
+          <button id="exportStems" class="btn green">STEMS</button>
+          <button id="panic" class="btn ghost">PANIC</button>
+        </div>
+        <input id="importFile" type="file" class="hidden" accept=".json,application/json"/>
+        <div class="help" style="margin-top:10px">
+          <span class="pill">Clic = on/off</span>
+          <span class="pill">Doble clic = acento</span>
+          <span class="pill">Clic derecho melodic = nota</span>
+          <span class="pill">Arrastra .wav/.mp3 a la pista</span>
+          <span class="pill">SYNTH / SMPL alterna motor</span>
+          <span class="pill">8 / 16 / 32 pasos por pista</span>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div id="notePicker" class="note-picker hidden"></div>
+<!-- hidden file input for sample loading per track -->
+<input id="sampleFile" type="file" class="hidden" accept="audio/*"/>
+
+<script>
+(() => {
+'use strict';
+
+/* ═══════════════════════════════════════════════════════════════════
+   CONSTANTS
+═══════════════════════════════════════════════════════════════════ */
+const MAX_STEPS = 32;
+const BARS = 16;
+const PATS = ['A','B','C','D','E','F'];
+
+const TRACKS = [
+  {id:'kick',  name:'KICK',  midiNote:36, color:'#00eaff'},
+  {id:'snare', name:'SNARE', midiNote:38, color:'#00eaff'},
+  {id:'hat',   name:'HAT',   midiNote:42, color:'#00eaff'},
+  {id:'bass',  name:'BASS',  midiNote:40, color:'#ff2a7d', melodic:true},
+  {id:'lead',  name:'LEAD',  midiNote:60, color:'#ff2a7d', melodic:true},
+  {id:'pad',   name:'PAD',   midiNote:52, color:'#ff2a7d', melodic:true},
+  {id:'fx',    name:'FX',    midiNote:72, color:'#00eaff'},
+  {id:'smp',   name:'SAMP',  midiNote:48, color:'#ffbd38'}  // free sample track
+];
+
+const NOTES = ['C1','D1','Eb1','F1','G1','Ab1','Bb1',
+               'C2','D2','Eb2','F2','G2','Ab2','Bb2',
+               'C3','D3','Eb3','F3','G3','Ab3','Bb3',
+               'C4','D4','Eb4','F4','G4'];
+
+const NOTE_MIDI = {
+  C1:24,D1:26,Eb1:27,F1:29,G1:31,Ab1:32,Bb1:34,
+  C2:36,D2:38,Eb2:39,F2:41,G2:43,Ab2:44,Bb2:46,
+  C3:48,D3:50,Eb3:51,F3:53,G3:55,Ab3:56,Bb3:58,
+  C4:60,D4:62,Eb4:63,F4:65,G4:67
+};
+
+const FREQ = {
+  C1:32.70,D1:36.71,Eb1:38.89,F1:43.65,G1:49.00,Ab1:51.91,Bb1:58.27,
+  C2:65.41,D2:73.42,Eb2:77.78,F2:87.31,G2:98.00,Ab2:103.83,Bb2:116.54,
+  C3:130.81,D3:146.83,Eb3:155.56,F3:174.61,G3:196.00,Ab3:207.65,Bb3:233.08,
+  C4:261.63,D4:293.66,Eb4:311.13,F4:349.23,G4:392.00
+};
+
+const STEP_OPTIONS = [8, 16, 32];
+
+/* ═══════════════════════════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════════════════════════ */
+let audio = null, timer = null, playing = false;
+let step = 0, bar = 0, pattern = 0, mode = 'pattern', songLoop = false;
+let nextTime = 0;
+let _swingOffsets = new Float64Array(MAX_STEPS);
+
+// Per-track decoded AudioBuffers for sample playback (runtime only, not serialized as buffer)
+// sampleBuffers[trackId] = AudioBuffer | null
+const sampleBuffers = {};
+TRACKS.forEach(t => sampleBuffers[t.id] = null);
+
+// Track which file input is targeting which track
+let _sampleTargetId = null;
+
+function emptyPattern(name) {
+  const tracks = {};
+  TRACKS.forEach(t => {
+    tracks[t.id] = {
+      stepCount: 16,           // variable step length per track
+      mode: 'synth',           // 'synth' | 'sample'
+      sampleB64: null,         // base64 encoded audio for JSON save
+      sampleName: '',          // display filename
+      steps: Array.from({length: MAX_STEPS}, () => ({
+        on: false, vel: .85, note: t.melodic ? 'C2' : null, prob: 1
+      }))
+    };
+  });
+  return {name, tracks};
+}
+
+let project = {
+  name: 'Untitled Rave',
+  bpm: 128, swing: 0,
+  master: {cutoff:15000, resonance:1, drive:.3},
+  patterns: PATS.map(emptyPattern),
+  timeline: [0,0,1,1,2,2,3,3,0,1,2,3,4,4,5,-1],
+  mixer: {}
+};
+TRACKS.forEach(t => {
+  project.mixer[t.id] = {volume: t.id==='pad'?.45:t.id==='smp'?.9:.85, pan:0, mute:false, solo:false};
+});
+
+/* ═══════════════════════════════════════════════════════════════════
+   DOM HELPERS
+═══════════════════════════════════════════════════════════════════ */
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+
+function status(msg, type='') {
+  const el = $('#status');
+  el.textContent = msg;
+  el.className = 'status' + (type ? ' '+type : '');
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SWING TABLE
+═══════════════════════════════════════════════════════════════════ */
+function rebuildSwing() {
+  const beatDur = 60 / project.bpm / 4;
+  const swingAmt = (project.swing / 100) * beatDur * 0.5;
+  for(let i = 0; i < MAX_STEPS; i++) {
+    _swingOffsets[i] = (i % 2 === 1) ? swingAmt : -swingAmt;
+  }
+  _swingOffsets[0] = 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   AUDIO ENGINE — init
+═══════════════════════════════════════════════════════════════════ */
+function initAudio() {
+  if(audio) return;
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const master = ctx.createGain();
+  const filter = ctx.createBiquadFilter();
+  const drive  = ctx.createWaveShaper();
+  filter.type = 'lowpass';
+  filter.frequency.value = project.master.cutoff;
+  filter.Q.value = project.master.resonance;
+  drive.curve = makeDrive(project.master.drive);
+  master.gain.value = .82;
+  filter.connect(drive);
+  drive.connect(master);
+  master.connect(ctx.destination);
+  audio = {ctx, filter, drive, master, noise: makeNoise(ctx)};
+}
+
+function makeDrive(amount) {
+  const n=2048, c=new Float32Array(n), k=amount*80;
+  for(let i=0;i<n;i++){const x=i*2/n-1; c[i]=(1+k)*x/(1+k*Math.abs(x));}
+  return c;
+}
+
+function makeNoise(ctx) {
+  const b = ctx.createBuffer(1, ctx.sampleRate*2, ctx.sampleRate);
+  const d = b.getChannelData(0);
+  for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1;
+  return b;
+}
+
+function applyMaster() {
+  if(!audio) return;
+  const t = audio.ctx.currentTime;
+  audio.filter.frequency.setTargetAtTime(project.master.cutoff, t, .015);
+  audio.filter.Q.setTargetAtTime(project.master.resonance, t, .015);
+  audio.drive.curve = makeDrive(project.master.drive);
+}
+
+function trackOut(id, time) {
+  const ctx = audio.ctx;
+  const solo = Object.values(project.mixer).some(m => m.solo);
+  const m = project.mixer[id];
+  const g = ctx.createGain(), p = ctx.createStereoPanner();
+  g.gain.setValueAtTime((m.mute || (solo && !m.solo)) ? 0 : m.volume, time);
+  p.pan.setValueAtTime(m.pan, time);
+  g.connect(p); p.connect(audio.filter);
+  return g;
+}
+
+function envGain(ctx, time, a, d, v=.9) {
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(.0001, time);
+  g.gain.linearRampToValueAtTime(v, time+a);
+  g.gain.exponentialRampToValueAtTime(.0001, time+a+d);
+  return g;
+}
+
+function osc(type, f, time, dur, out, vel=1) {
+  const ctx=audio.ctx, o=ctx.createOscillator(), g=envGain(ctx,time,.004,dur,vel);
+  o.type=type; o.frequency.setValueAtTime(f,time);
+  o.connect(g); g.connect(out);
+  o.start(time); o.stop(time+dur+.02);
+  return o;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SYNTH VOICES
+═══════════════════════════════════════════════════════════════════ */
+function playSynth(id, ev, time) {
+  const out = trackOut(id, time);
+  const v = ev.vel * (.82 + Math.random()*0.06);
+  const ctx = audio.ctx;
+  if(Math.random() > ev.prob) return;
+
+  if(id==='kick') {
+    const o=osc('sine',160,time,.32,out,1.1*v);
+    o.frequency.exponentialRampToValueAtTime(42, time+.12);
+    osc('square',1100,time,.025,out,.12*v);
+  }
+  else if(id==='snare') {
+    osc('triangle',180,time,.12,out,.32*v);
+    const n=ctx.createBufferSource(), f=ctx.createBiquadFilter(), g=envGain(ctx,time,.003,.18,.58*v);
+    n.buffer=audio.noise; f.type='bandpass'; f.frequency.value=1500;
+    n.connect(f); f.connect(g); g.connect(out);
+    n.start(time); n.stop(time+.22);
+  }
+  else if(id==='hat') {
+    const n=ctx.createBufferSource(), f=ctx.createBiquadFilter(), g=envGain(ctx,time,.001,.06,.34*v);
+    n.buffer=audio.noise; f.type='highpass'; f.frequency.value=7200;
+    n.connect(f); f.connect(g); g.connect(out);
+    n.start(time); n.stop(time+.09);
+  }
+  else if(id==='bass') {
+    const f=FREQ[ev.note]||FREQ.C2;
+    osc('sawtooth',f,time,.22,out,.55*v);
+    osc('square',f/2,time,.18,out,.12*v);
+  }
+  else if(id==='lead') {
+    // Thin lead: square + detune
+    const f=FREQ[ev.note]||FREQ.C3;
+    osc('square',f,time,.18,out,.38*v);
+    osc('sawtooth',f*1.003,time,.16,out,.22*v);
+    // quick attack envelope feel
+  }
+  else if(id==='pad') {
+    const f=FREQ[ev.note]||FREQ.C2;
+    osc('sawtooth',f,time,.72,out,.15*v);
+    osc('sawtooth',f*1.007,time,.72,out,.12*v);
+    osc('sine',f*2,time,.60,out,.08*v);
+  }
+  else if(id==='fx') {
+    const n=ctx.createBufferSource(), f=ctx.createBiquadFilter(), g=envGain(ctx,time,.01,.55,.35*v);
+    n.buffer=audio.noise; f.type='bandpass';
+    f.frequency.setValueAtTime(600+Math.random()*3000, time);
+    n.connect(f); f.connect(g); g.connect(out);
+    n.start(time); n.stop(time+.65);
+  }
+  else if(id==='smp') {
+    // smp in synth mode: noise burst placeholder
+    const n=ctx.createBufferSource(), f=ctx.createBiquadFilter(), g=envGain(ctx,time,.005,.25,.4*v);
+    n.buffer=audio.noise; f.type='bandpass'; f.frequency.value=400+Math.random()*1200;
+    n.connect(f); f.connect(g); g.connect(out);
+    n.start(time); n.stop(time+.3);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SAMPLE PLAYBACK
+═══════════════════════════════════════════════════════════════════ */
+function playSample(id, ev, time) {
+  const buf = sampleBuffers[id];
+  if(!buf) { playSynth(id, ev, time); return; }
+  if(Math.random() > ev.prob) return;
+  const ctx = audio.ctx;
+  const out = trackOut(id, time);
+  const src = ctx.createBufferSource();
+  src.buffer = buf;
+  // Pitch shift via playbackRate based on note
+  if(ev.note && FREQ[ev.note]) {
+    const baseFreq = FREQ['C3']; // treat C3 as root pitch
+    src.playbackRate.value = FREQ[ev.note] / baseFreq;
+  } else {
+    src.playbackRate.value = 1;
+  }
+  src.connect(out);
+  src.start(time);
+  src.stop(time + buf.duration / src.playbackRate.value + .01);
+}
+
+function playNote(id, ev, time) {
+  const trkData = project.patterns[activePatternIndex() >= 0 ? activePatternIndex() : pattern].tracks[id];
+  if(trkData.mode === 'sample' && sampleBuffers[id]) {
+    playSample(id, ev, time);
+  } else {
+    playSynth(id, ev, time);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SAMPLE LOADING (from File or base64)
+═══════════════════════════════════════════════════════════════════ */
+async function loadSampleFromFile(trackId, file) {
+  status('Cargando sample ' + file.name + '...', '');
+  try {
+    // 1. Read as ArrayBuffer for WebAudio decoding
+    const arrayBuf = await file.arrayBuffer();
+    initAudio();
+    const decoded = await audio.ctx.decodeAudioData(arrayBuf.slice(0));
+    sampleBuffers[trackId] = decoded;
+
+    // 2. Also store as base64 for JSON export
+    const b64 = await arrayBufToB64(arrayBuf);
+    const trkData = project.patterns[pattern].tracks[trackId];
+    trkData.mode = 'sample';
+    trkData.sampleB64 = b64;
+    trkData.sampleName = file.name;
+
+    // Propagate sample to all patterns (same track id)
+    project.patterns.forEach(pat => {
+      if(pat.tracks[trackId].mode !== 'sample') {
+        pat.tracks[trackId].mode = 'sample';
+        pat.tracks[trackId].sampleB64 = b64;
+        pat.tracks[trackId].sampleName = file.name;
+      }
+    });
+
+    renderSeq();
+    status('Sample cargado: ' + file.name + ' (' + (file.size/1024|0) + ' KB)', 'ok');
+  } catch(e) {
+    status('Error al decodificar sample: ' + e.message, 'err');
+  }
+}
+
+function arrayBufToB64(buf) {
+  return new Promise(resolve => {
+    const blob = new Blob([buf]);
+    const fr = new FileReader();
+    fr.onload = e => {
+      // result is data:audio/xxx;base64,AAAA...
+      const b64 = e.target.result.split(',')[1];
+      resolve(b64);
+    };
+    fr.readAsDataURL(blob);
+  });
+}
+
+async function restoreSampleFromB64(trackId, b64, mimeType) {
+  try {
+    const binaryStr = atob(b64);
+    const bytes = new Uint8Array(binaryStr.length);
+    for(let i=0;i<binaryStr.length;i++) bytes[i]=binaryStr.charCodeAt(i);
+    initAudio();
+    const decoded = await audio.ctx.decodeAudioData(bytes.buffer);
+    sampleBuffers[trackId] = decoded;
+  } catch(e) {
+    console.warn('Could not restore sample for', trackId, e);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SCHEDULER
+═══════════════════════════════════════════════════════════════════ */
+function activePatternIndex() {
+  return mode === 'song' ? project.timeline[bar] : pattern;
+}
+
+function schedule(s, t) {
+  const pi = activePatternIndex();
+  if(pi < 0) return;
+  TRACKS.forEach(tr => {
+    const trkData = project.patterns[pi].tracks[tr.id];
+    // Only fire if step is within this track's stepCount (variable length)
+    if(s >= trkData.stepCount) return;
+    const ev = trkData.steps[s];
+    if(ev.on) playNote(tr.id, ev, t);
+  });
+}
+
+function tick() {
+  while(nextTime < audio.ctx.currentTime + .12) {
+    schedule(step, nextTime);
+    advance();
+  }
+  timer = setTimeout(tick, 25);
+}
+
+function advance() {
+  const beatDur = 60 / project.bpm / 4;
+  const swingOff = _swingOffsets[step] || 0;
+
+  paintPlayStep(step, bar);
+
+  // Find max stepCount across all active tracks for cycle length
+  const pi = activePatternIndex();
+  let cycleLen = 16;
+  if(pi >= 0) {
+    cycleLen = Math.max(...TRACKS.map(tr => project.patterns[pi].tracks[tr.id].stepCount));
+  }
+
+  step++;
+  if(step >= cycleLen) {
+    step = 0;
+    if(mode === 'song') {
+      let next = bar + 1;
+      let lastBar = BARS - 1;
+      while(lastBar > 0 && project.timeline[lastBar] < 0) lastBar--;
+      if(next > lastBar) {
+        if(songLoop) { next = 0; }
+        else { setTimeout(stop, 50); nextTime += beatDur; return; }
+      }
+      bar = next;
+    }
+    paintTimelineBar(bar);
+  }
+
+  const nextOff = _swingOffsets[step] || 0;
+  nextTime += beatDur + nextOff - swingOff;
+}
+
+function playStop() {
+  initAudio();
+  if(audio.ctx.state === 'suspended') audio.ctx.resume();
+  playing = !playing;
+  if(playing) {
+    rebuildSwing();
+    $('#playBtn').textContent = '■ STOP';
+    $('#playBtn').classList.add('stop');
+    step = 0; bar = 0;
+    nextTime = audio.ctx.currentTime + .06;
+    tick();
+    status('Reproduciendo...', 'ok');
+  } else {
+    stop();
+  }
+}
+
+function stop() {
+  playing = false;
+  clearTimeout(timer);
+  $('#playBtn').textContent = '▶ PLAY';
+  $('#playBtn').classList.remove('stop');
+  $$('.cell.play').forEach(c => c.classList.remove('play'));
+  $$('.bar.now').forEach(b => { b.classList.remove('now'); b.querySelector('b').style.color=''; });
+  status('Parado.');
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RENDER
+═══════════════════════════════════════════════════════════════════ */
+function renderAll() {
+  renderPatterns();
+  renderSeq();
+  renderTimeline();
+  renderMixer();
+  syncControls();
+}
+
+function renderPatterns() {
+  const box = $('#patterns');
+  box.innerHTML = '';
+  PATS.forEach((p,i) => {
+    const b = document.createElement('button');
+    b.className = 'btn tab' + (i===pattern?' active':'');
+    b.textContent = p;
+    b.onclick = () => { pattern=i; renderPatterns(); renderSeq(); syncControls(); };
+    box.appendChild(b);
+  });
+}
+
+function renderSeq() {
+  const box = $('#sequencer');
+  box.innerHTML = '';
+  const pat = project.patterns[pattern];
+
+  // Determine column count from widest track
+  const maxSteps = Math.max(...TRACKS.map(tr => pat.tracks[tr.id].stepCount));
+
+  // Grid template: 160px label + maxSteps * 41px cells
+  const colTemplate = `160px repeat(${maxSteps}, 38px)`;
+
+  // Header
+  const head = document.createElement('div');
+  head.className = 'seq-head';
+  head.style.gridTemplateColumns = colTemplate;
+  let headHtml = '<div></div>';
+  for(let i=0;i<maxSteps;i++) {
+    headHtml += `<div class="${i%4===0?'beat-head':''}">${i+1}</div>`;
+  }
+  head.innerHTML = headHtml;
+  box.appendChild(head);
+
+  TRACKS.forEach(tr => {
+    const trkData = pat.tracks[tr.id];
+    const row = document.createElement('div');
+    row.className = 'seq-row';
+    row.style.gridTemplateColumns = colTemplate;
+
+    // ── Track label with sample UI ──────────────────────────────
+    const label = document.createElement('div');
+    label.className = 'trackname';
+    label.dataset.trackId = tr.id;
+
+    // Top row: name + mode toggle + step selector
+    const topRow = document.createElement('div');
+    topRow.className = 'trackname-top';
+    topRow.innerHTML = `<span>${tr.name}</span>`;
+
+    // Mode toggle SYNTH/SMPL
+    const modeBtn = document.createElement('button');
+    modeBtn.className = 'btn-xs' + (trkData.mode==='sample'?' active':'');
+    modeBtn.textContent = trkData.mode === 'sample' ? 'SMPL' : 'SYNTH';
+    modeBtn.title = 'Alternar entre síntesis y sample';
+    modeBtn.onclick = () => {
+      trkData.mode = trkData.mode === 'synth' ? 'sample' : 'synth';
+      renderSeq();
+    };
+    topRow.appendChild(modeBtn);
+    label.appendChild(topRow);
+
+    // Steps length selector
+    const stepsRow = document.createElement('div');
+    stepsRow.className = 'sample-bar';
+    const stepsLabel = document.createElement('span');
+    stepsLabel.className = 'sample-name';
+    stepsLabel.textContent = trkData.mode==='sample' && trkData.sampleName
+      ? trkData.sampleName
+      : (tr.melodic ? 'melodic' : 'drum');
+    stepsRow.appendChild(stepsLabel);
+
+    // Step count buttons
+    const stepsSel = document.createElement('div');
+    stepsSel.className = 'steps-sel';
+    STEP_OPTIONS.forEach(n => {
+      const b = document.createElement('button');
+      b.textContent = n;
+      b.className = trkData.stepCount===n ? 'active' : '';
+      b.onclick = () => { trkData.stepCount = n; renderSeq(); };
+      stepsSel.appendChild(b);
+    });
+    stepsRow.appendChild(stepsSel);
+    label.appendChild(stepsRow);
+
+    // Drag-and-drop sample loading
+    label.addEventListener('dragover', e => { e.preventDefault(); label.classList.add('drag-over'); });
+    label.addEventListener('dragleave', () => label.classList.remove('drag-over'));
+    label.addEventListener('drop', e => {
+      e.preventDefault();
+      label.classList.remove('drag-over');
+      const file = e.dataTransfer.files[0];
+      if(file && file.type.startsWith('audio/')) loadSampleFromFile(tr.id, file);
+      else status('Solo se aceptan archivos de audio.', 'err');
+    });
+    // Click on label area (not buttons) to open file dialog
+    label.addEventListener('click', e => {
+      if(e.target !== label) return; // only bare label
+      _sampleTargetId = tr.id;
+      $('#sampleFile').click();
+    });
+
+    row.appendChild(label);
+
+    // ── Step cells ───────────────────────────────────────────────
+    for(let i=0; i<maxSteps; i++) {
+      const ev = trkData.steps[i];
+      const inactive = i >= trkData.stepCount;
+      const c = document.createElement('button');
+      c.className = 'cell'
+        + (i%4===0 ? ' beat':'')
+        + (ev.on   ? ' on'  :'')
+        + (ev.on && ev.vel>.92 ? ' accent':'')
+        + ((tr.melodic || trkData.mode==='sample') ? ' note':'')
+        + (inactive ? ' inactive':'');
+      c.dataset.track = tr.id;
+      c.dataset.step  = i;
+      if(tr.melodic || trkData.mode==='sample') c.dataset.note = ev.on ? (ev.note||'') : '';
+
+      c.onclick = () => {
+        if(inactive) return;
+        ev.on = !ev.on;
+        if(ev.on && (tr.melodic || trkData.mode==='sample') && !ev.note) ev.note = 'C3';
+        updateCell(c, ev, tr, trkData);
+      };
+      c.ondblclick = e => {
+        e.preventDefault();
+        if(inactive) return;
+        ev.vel = ev.vel>.92 ? .65 : 1;
+        ev.on = true;
+        updateCell(c, ev, tr, trkData);
+      };
+      c.oncontextmenu = e => {
+        e.preventDefault();
+        if(inactive) return;
+        if(tr.melodic || trkData.mode==='sample') openNotePicker(e, ev, c, tr, trkData);
+      };
+      row.appendChild(c);
+    }
+    box.appendChild(row);
+  });
+}
+
+function updateCell(c, ev, tr, trkData) {
+  c.className = 'cell'
+    + (parseInt(c.dataset.step)%4===0 ? ' beat':'')
+    + (ev.on   ? ' on'  :'')
+    + (ev.on && ev.vel>.92 ? ' accent':'')
+    + ((tr.melodic || trkData.mode==='sample') ? ' note':'');
+  if(tr.melodic || trkData.mode==='sample') c.dataset.note = ev.on ? (ev.note||'') : '';
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   NOTE PICKER
+═══════════════════════════════════════════════════════════════════ */
+let pickerTarget = null;
+function openNotePicker(e, ev, cell, tr, trkData) {
+  const picker = $('#notePicker');
+  picker.innerHTML = '';
+  NOTES.forEach(n => {
+    const b = document.createElement('button');
+    b.textContent = n;
+    if(ev.note === n) b.classList.add('active-note');
+    b.onclick = () => {
+      ev.note = n;
+      ev.on = true;
+      updateCell(cell, ev, tr, trkData);
+      closePicker();
+    };
+    picker.appendChild(b);
+  });
+  picker.classList.remove('hidden');
+  const x = Math.min(e.clientX, window.innerWidth - 220);
+  const y = Math.min(e.clientY, window.innerHeight - 260);
+  picker.style.left = x+'px';
+  picker.style.top  = y+'px';
+  pickerTarget = cell;
+  e.stopPropagation();
+}
+function closePicker() {
+  $('#notePicker').classList.add('hidden');
+  pickerTarget = null;
+}
+document.addEventListener('click', e => {
+  if(pickerTarget && !$('#notePicker').contains(e.target)) closePicker();
+});
+
+/* ═══════════════════════════════════════════════════════════════════
+   TIMELINE
+═══════════════════════════════════════════════════════════════════ */
+function renderTimeline() {
+  const box = $('#timeline');
+  box.innerHTML = '';
+  for(let i=0; i<BARS; i++) {
+    const val = project.timeline[i];
+    const b = document.createElement('button');
+    b.className = 'bar' + (playing && mode==='song' && i===bar ? ' now':'');
+    b.dataset.barIdx = i;
+    b.innerHTML =
+      `<small>${String(i+1).padStart(2,'0')}</small>`+
+      `<b>${val<0?'—':PATS[val]}</b>`+
+      `<span>${sceneName(i)}</span>`;
+    b.onclick = () => { project.timeline[i] = val >= PATS.length-1 ? -1 : val+1; renderTimeline(); };
+    b.ondblclick = e => { e.preventDefault(); project.timeline[i]=-1; renderTimeline(); };
+    b.oncontextmenu = e => { e.preventDefault(); project.timeline[i]=val<=-1?PATS.length-1:val-1; renderTimeline(); };
+    box.appendChild(b);
+  }
+}
+
+function paintTimelineBar(currentBar) {
+  $$('.bar').forEach(b => {
+    const idx = parseInt(b.dataset.barIdx);
+    const isNow = playing && mode==='song' && idx===currentBar;
+    b.classList.toggle('now', isNow);
+    b.querySelector('b').style.color = isNow ? 'var(--amber)' : '';
+  });
+}
+
+function sceneName(i) {
+  return i<4?'INTRO':i<8?'BUILD':i<12?'DROP':i<14?'BREAK':'OUTRO';
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MIXER — no re-render on slider drag
+═══════════════════════════════════════════════════════════════════ */
+function renderMixer() {
+  const box = $('#mixer');
+  box.innerHTML = '';
+  TRACKS.forEach(tr => {
+    const m = project.mixer[tr.id];
+    const d = document.createElement('div');
+    d.className = 'chan';
+    d.innerHTML = `
+      <h4>${tr.name}</h4>
+      <div class="control">
+        <label>Vol <output class="vol-out">${Math.round(m.volume*100)}</output></label>
+        <input class="vol-sl" type="range" min="0" max="1.3" step="0.01" value="${m.volume}">
+      </div>
+      <div class="control">
+        <label>Pan <output class="pan-out">${m.pan.toFixed(1)}</output></label>
+        <input class="pan-sl" type="range" min="-1" max="1" step="0.1" value="${m.pan}">
+      </div>
+      <div class="mini">
+        <button class="mute-btn ${m.mute?'on':''}">M</button>
+        <button class="solo-btn ${m.solo?'solo-on':''}">S</button>
+      </div>`;
+    d.querySelector('.vol-sl').oninput = e => {
+      m.volume = parseFloat(e.target.value);
+      d.querySelector('.vol-out').textContent = Math.round(m.volume*100);
+    };
+    d.querySelector('.pan-sl').oninput = e => {
+      m.pan = parseFloat(e.target.value);
+      d.querySelector('.pan-out').textContent = m.pan.toFixed(1);
+    };
+    d.querySelector('.mute-btn').onclick = function(){ m.mute=!m.mute; this.classList.toggle('on',m.mute); };
+    d.querySelector('.solo-btn').onclick = function(){ m.solo=!m.solo; this.classList.toggle('solo-on',m.solo); };
+    box.appendChild(d);
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PLAY CURSOR — targeted, no full re-render
+═══════════════════════════════════════════════════════════════════ */
+function paintPlayStep(s, currentBar) {
+  $$('.cell').forEach(c => c.classList.toggle('play', parseInt(c.dataset.step)===s));
+  const pi = activePatternIndex();
+  const patLabel = pi >= 0 ? PATS[pi] : '—';
+  $('#patternView').textContent = patLabel + ' / ' + (currentBar+1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CONTROLS SYNC
+═══════════════════════════════════════════════════════════════════ */
+function syncControls() {
+  const p = project;
+  $('#projectName').value    = p.name;
+  $('#bpm').value            = p.bpm;
+  $('#bpmOut').textContent   = p.bpm + ' bpm';
+  $('#bpmView').textContent  = p.bpm;
+  $('#swing').value          = p.swing;
+  $('#swingOut').textContent = p.swing + '%';
+  $('#cutoff').value         = p.master.cutoff;
+  $('#cutoffOut').textContent= p.master.cutoff + ' Hz';
+  $('#res').value            = p.master.resonance;
+  $('#resOut').textContent   = p.master.resonance;
+  $('#drive').value          = p.master.drive;
+  $('#driveOut').textContent = p.master.drive;
+  $('#patternView').textContent = PATS[pattern] + ' / ' + (bar+1);
+}
+
+function setMasterFromUI() {
+  project.bpm      = parseInt($('#bpm').value);
+  project.swing    = parseInt($('#swing').value);
+  project.master.cutoff    = parseInt($('#cutoff').value);
+  project.master.resonance = parseFloat($('#res').value);
+  project.master.drive     = parseFloat($('#drive').value);
+  $('#bpmOut').textContent   = project.bpm + ' bpm';
+  $('#bpmView').textContent  = project.bpm;
+  $('#swingOut').textContent = project.swing + '%';
+  $('#cutoffOut').textContent= project.master.cutoff + ' Hz';
+  $('#resOut').textContent   = project.master.resonance;
+  $('#driveOut').textContent = project.master.drive;
+  rebuildSwing();
+  applyMaster();
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CREATIVE TOOLS
+═══════════════════════════════════════════════════════════════════ */
+function mutate() {
+  const pat = project.patterns[pattern];
+  TRACKS.forEach(tr => {
+    const trkData = pat.tracks[tr.id];
+    trkData.steps.forEach((ev,i) => {
+      if(i >= trkData.stepCount) return;
+      if(Math.random() < .12) ev.on = !ev.on;
+      if(ev.on && Math.random() < .18) ev.vel = ev.vel>.8 ? .62 : 1;
+      if(tr.melodic && ev.on && Math.random() < .16)
+        ev.note = NOTES[Math.floor(Math.random()*12)];
+    });
+  });
+  renderSeq();
+  status('Patrón mutado.', 'ok');
+}
+
+function humanize() {
+  const pat = project.patterns[pattern];
+  TRACKS.forEach(tr => pat.tracks[tr.id].steps.forEach(ev => {
+    if(ev.on) {
+      ev.vel  = Math.max(.35, Math.min(1, ev.vel + (Math.random()-.5)*.25));
+      ev.prob = Math.random() < .18 ? .85 : 1;
+    }
+  }));
+  renderSeq();
+  status('Humanize aplicado.', 'ok');
+}
+
+function clearPattern() {
+  project.patterns[pattern] = emptyPattern(PATS[pattern]);
+  // Clear sample buffers would lose loaded samples for this pattern —
+  // instead keep them in sampleBuffers (runtime) but reset pattern data
+  renderSeq();
+  status('Patrón ' + PATS[pattern] + ' limpiado.', 'ok');
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SAVE / LOAD  (samples stored as base64 in JSON)
+═══════════════════════════════════════════════════════════════════ */
+function save() {
+  const n = $('#projectName').value.trim();
+  if(n) project.name = n;
+  try {
+    localStorage.setItem('rave-grid-404-pro', JSON.stringify(project));
+    status('Guardado en el navegador.', 'ok');
+  } catch(e) {
+    status('Error al guardar (¿JSON muy grande por samples?): ' + e.message, 'err');
+  }
+}
+
+async function load() {
+  const raw = localStorage.getItem('rave-grid-404-pro');
+  if(!raw) return status('No hay guardado local.', 'err');
+  try {
+    project = JSON.parse(raw);
+    // Compat: upgrade old format patterns
+    project.patterns.forEach(pat => {
+      TRACKS.forEach(tr => {
+        const td = pat.tracks[tr.id];
+        if(!td) { pat.tracks[tr.id] = emptyPattern('x').tracks[tr.id]; return; }
+        // Old format used `steps` array directly without stepCount
+        if(!td.stepCount) td.stepCount = 16;
+        if(!td.mode) td.mode = 'synth';
+        if(!td.steps && td[0] !== undefined) {
+          // very old: array of ev objects directly
+          td.steps = Array.from({length:MAX_STEPS},(_,i)=>td[i]||{on:false,vel:.85,note:null,prob:1});
+        }
+        if(!td.steps) td.steps = Array.from({length:MAX_STEPS},()=>({on:false,vel:.85,note:null,prob:1}));
+        // Restore samples
+        if(td.sampleB64) {
+          restoreSampleFromB64(tr.id, td.sampleB64, 'audio/wav');
+        }
+      });
+      if(!project.mixer) project.mixer = {};
+      TRACKS.forEach(t => {
+        if(!project.mixer[t.id])
+          project.mixer[t.id]={volume:.85,pan:0,mute:false,solo:false};
+      });
+    });
+    pattern=0; bar=0;
+    renderAll();
+    status('Proyecto cargado.', 'ok');
+  } catch(e) {
+    status('Error al cargar: ' + e.message, 'err');
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FILE HELPERS
+═══════════════════════════════════════════════════════════════════ */
+function download(name, blob) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+
+function exportJson() {
+  const n = $('#projectName').value.trim();
+  if(n) project.name = n;
+  const json = JSON.stringify(project, null, 2);
+  const kb = (json.length/1024)|0;
+  download((project.name||'rave-grid-404')+'.json',
+    new Blob([json], {type:'application/json'}));
+  status(`JSON exportado (${kb} KB). Los samples están embebidos.`, 'ok');
+}
+
+async function importJson(file) {
+  const r = new FileReader();
+  r.onload = async () => {
+    try {
+      project = JSON.parse(r.result);
+      // Upgrade + restore samples
+      for(const pat of project.patterns) {
+        for(const tr of TRACKS) {
+          const td = pat.tracks[tr.id];
+          if(!td) { pat.tracks[tr.id] = emptyPattern('x').tracks[tr.id]; continue; }
+          if(!td.stepCount) td.stepCount = 16;
+          if(!td.mode) td.mode = 'synth';
+          if(!td.steps) td.steps = Array.from({length:MAX_STEPS},()=>({on:false,vel:.85,note:null,prob:1}));
+          if(td.sampleB64 && !sampleBuffers[tr.id]) {
+            await restoreSampleFromB64(tr.id, td.sampleB64, 'audio/wav');
+          }
+        }
+      }
+      if(!project.mixer) project.mixer={};
+      TRACKS.forEach(t=>{if(!project.mixer[t.id])project.mixer[t.id]={volume:.85,pan:0,mute:false,solo:false};});
+      pattern=0; bar=0;
+      renderAll();
+      status('JSON importado con samples restaurados.', 'ok');
+    } catch(e) {
+      status('Error importando: ' + e.message, 'err');
+    }
+  };
+  r.readAsText(file);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MIDI EXPORT
+═══════════════════════════════════════════════════════════════════ */
+function midiVar(n) {
+  const bytes=[]; let buffer=n&0x7f;
+  while(n>>=7){buffer<<=8;buffer|=((n&0x7f)|0x80);}
+  while(true){bytes.push(buffer&0xff);if(buffer&0x80)buffer>>=8;else break;}
+  return bytes;
+}
+function noteToMidi(n){ return NOTE_MIDI[n]||36; }
+
+function exportMidi() {
+  const ppq=96, events=[];
+  const tempo=Math.round(60000000/project.bpm);
+  events.push({t:0,d:[0xff,0x51,0x03,(tempo>>16)&255,(tempo>>8)&255,tempo&255]});
+  for(let b=0;b<BARS;b++){
+    const pi=project.timeline[b];
+    if(pi<0) continue;
+    for(let s=0;s<MAX_STEPS;s++){
+      const t=(b*MAX_STEPS+s)*(ppq/4)*(16/MAX_STEPS);
+      TRACKS.forEach((tr,ch)=>{
+        const trkData=project.patterns[pi].tracks[tr.id];
+        if(s>=trkData.stepCount) return;
+        const ev=trkData.steps[s];
+        if(!ev.on) return;
+        const note=tr.melodic ? noteToMidi(ev.note) : tr.midiNote;
+        const vel=Math.round(90*ev.vel);
+        events.push({t,d:[0x90+Math.min(ch,15),note,vel]});
+        events.push({t:t+(tr.id==='pad'?ppq:ppq/4),d:[0x80+Math.min(ch,15),note,0]});
+      });
+    }
+  }
+  events.sort((a,b)=>a.t-b.t);
+  let last=0,track=[];
+  events.forEach(e=>{track.push(...midiVar(Math.max(0,Math.round(e.t-last))),...e.d);last=e.t;});
+  track.push(0,0xff,0x2f,0);
+  const toBytes=s=>[...s].map(c=>c.charCodeAt(0));
+  const header=[...toBytes('MThd'),0,0,0,6,0,0,0,1,(ppq>>8)&255,ppq&255];
+  const trk=[...toBytes('MTrk'),(track.length>>24)&255,(track.length>>16)&255,(track.length>>8)&255,track.length&255,...track];
+  download((project.name||'rave-grid-404')+'.mid',
+    new Blob([new Uint8Array([...header,...trk])],{type:'audio/midi'}));
+  status('MIDI exportado.', 'ok');
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   WAV / STEMS EXPORT  (swing-aware offline render)
+═══════════════════════════════════════════════════════════════════ */
+async function exportWav() {
+  status('Renderizando WAV...');
+  const stepDur=60/project.bpm/4;
+  const dur=BARS*MAX_STEPS*stepDur*(16/MAX_STEPS)+2;
+  const ctx=new OfflineAudioContext(2,Math.ceil(dur*44100),44100);
+  await renderOffline(ctx, null);
+  const buf=await ctx.startRendering();
+  download((project.name||'rave-grid-404')+'.wav', wavBlob(buf));
+  status('WAV exportado.', 'ok');
+}
+
+async function exportStems() {
+  status('Renderizando stems...');
+  for(const tr of TRACKS) {
+    const stepDur=60/project.bpm/4;
+    const dur=BARS*MAX_STEPS*stepDur*(16/MAX_STEPS)+2;
+    const ctx=new OfflineAudioContext(2,Math.ceil(dur*44100),44100);
+    await renderOffline(ctx, tr.id);
+    const buf=await ctx.startRendering();
+    download((project.name||'rave-grid-404')+'-'+tr.id+'.wav', wavBlob(buf));
+  }
+  status('Stems exportados.', 'ok');
+}
+
+async function renderOffline(ctx, onlyTrack) {
+  const master=ctx.createGain(), filter=ctx.createBiquadFilter(), drive=ctx.createWaveShaper();
+  filter.type='lowpass'; filter.frequency.value=project.master.cutoff;
+  filter.Q.value=project.master.resonance; drive.curve=makeDrive(project.master.drive);
+  master.gain.value=.82;
+  filter.connect(drive); drive.connect(master); master.connect(ctx.destination);
+  const noise=makeNoise(ctx);
+
+  function out(id,t){
+    const solo=Object.values(project.mixer).some(m=>m.solo);
+    const m=project.mixer[id];
+    const g=ctx.createGain(), p=ctx.createStereoPanner();
+    g.gain.value=(m.mute||(solo&&!m.solo))?0:m.volume;
+    p.pan.value=m.pan; g.connect(p); p.connect(filter); return g;
+  }
+  function eg(t,a,d,v){
+    const g=ctx.createGain();
+    g.gain.setValueAtTime(.0001,t);
+    g.gain.linearRampToValueAtTime(v,t+a);
+    g.gain.exponentialRampToValueAtTime(.0001,t+a+d);
+    return g;
+  }
+  function oo(type,f,t,d,o,v){
+    const osc=ctx.createOscillator(),g=eg(t,.004,d,v);
+    osc.type=type; osc.frequency.setValueAtTime(f,t);
+    osc.connect(g); g.connect(o); osc.start(t); osc.stop(t+d+.02); return osc;
+  }
+
+  function pl(id,ev,t,trkData){
+    if(onlyTrack && id!==onlyTrack) return;
+    const o=out(id,t), v=ev.vel;
+
+    // Sample playback in offline context
+    if(trkData.mode==='sample' && sampleBuffers[id]) {
+      const src=ctx.createBufferSource();
+      src.buffer=sampleBuffers[id];
+      if(ev.note && FREQ[ev.note]) src.playbackRate.value=FREQ[ev.note]/FREQ['C3'];
+      src.connect(o);
+      src.start(t);
+      src.stop(t+sampleBuffers[id].duration/src.playbackRate.value+.01);
+      return;
+    }
+
+    if(id==='kick'){const x=oo('sine',160,t,.32,o,1.1*v);x.frequency.exponentialRampToValueAtTime(42,t+.12);oo('square',1100,t,.025,o,.12*v);}
+    else if(id==='snare'){oo('triangle',180,t,.12,o,.32*v);const n=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=eg(t,.003,.18,.58*v);n.buffer=noise;f.type='bandpass';f.frequency.value=1500;n.connect(f);f.connect(g);g.connect(o);n.start(t);n.stop(t+.22);}
+    else if(id==='hat'){const n=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=eg(t,.001,.06,.34*v);n.buffer=noise;f.type='highpass';f.frequency.value=7200;n.connect(f);f.connect(g);g.connect(o);n.start(t);n.stop(t+.09);}
+    else if(id==='bass'){const f=FREQ[ev.note]||FREQ.C2;oo('sawtooth',f,t,.22,o,.55*v);oo('square',f/2,t,.18,o,.12*v);}
+    else if(id==='lead'){const f=FREQ[ev.note]||FREQ.C3;oo('square',f,t,.18,o,.38*v);oo('sawtooth',f*1.003,t,.16,o,.22*v);}
+    else if(id==='pad'){const f=FREQ[ev.note]||FREQ.C2;oo('sawtooth',f,t,.72,o,.15*v);oo('sawtooth',f*1.007,t,.72,o,.12*v);}
+    else if(id==='fx'){const n=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=eg(t,.01,.55,.35*v);n.buffer=noise;f.type='bandpass';f.frequency.setValueAtTime(600+Math.random()*3000,t);n.connect(f);f.connect(g);g.connect(o);n.start(t);n.stop(t+.65);}
+    else if(id==='smp'){const n=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=eg(t,.005,.25,.4*v);n.buffer=noise;f.type='bandpass';f.frequency.value=400+Math.random()*1200;n.connect(f);f.connect(g);g.connect(o);n.start(t);n.stop(t+.3);}
+  }
+
+  const beatDur=60/project.bpm/4;
+  const swingAmt=(project.swing/100)*beatDur*0.5;
+  function swingOff(s){return s===0?0:(s%2===1?swingAmt:-swingAmt);}
+
+  let t=0;
+  for(let b=0;b<BARS;b++){
+    const pi=project.timeline[b];
+    for(let s=0;s<MAX_STEPS;s++){
+      const off=swingOff(s);
+      if(pi>=0){
+        TRACKS.forEach(tr=>{
+          const trkData=project.patterns[pi].tracks[tr.id];
+          if(s>=trkData.stepCount) return;
+          const ev=trkData.steps[s];
+          if(ev.on) pl(tr.id,ev,t+off,trkData);
+        });
+      }
+      const nextOff=swingOff((s+1)%MAX_STEPS);
+      t+=beatDur+nextOff-off;
+    }
+  }
+  // don't call startRendering here — caller does it
+}
+
+function wavBlob(buffer){
+  const n=buffer.length,ch=buffer.numberOfChannels,rate=buffer.sampleRate;
+  const bytes=44+n*ch*2,view=new DataView(new ArrayBuffer(bytes));
+  let p=0;
+  function wstr(s){for(let i=0;i<s.length;i++)view.setUint8(p++,s.charCodeAt(i));}
+  function u32(v){view.setUint32(p,v,true);p+=4;}
+  function u16(v){view.setUint16(p,v,true);p+=2;}
+  wstr('RIFF');u32(bytes-8);wstr('WAVE');wstr('fmt ');u32(16);u16(1);u16(ch);u32(rate);
+  u32(rate*ch*2);u16(ch*2);u16(16);wstr('data');u32(n*ch*2);
+  const data=[];
+  for(let c=0;c<ch;c++) data.push(buffer.getChannelData(c));
+  for(let i=0;i<n;i++) for(let c=0;c<ch;c++){
+    const s=Math.max(-1,Math.min(1,data[c][i]));
+    view.setInt16(p,s<0?s*0x8000:s*0x7fff,true);p+=2;
+  }
+  return new Blob([view],{type:'audio/wav'});
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PRESETS  (updated for 8 tracks + stepCount)
+═══════════════════════════════════════════════════════════════════ */
+function setPreset(name) {
+  project.patterns = PATS.map(emptyPattern);
+  project.timeline = [0,0,1,1,2,2,3,3,0,1,2,3,4,4,5,-1];
+  pattern=0; bar=0;
+  const p=project.patterns;
+
+  function on(pi, trId, steps, note=null, vel=.85, sc=16) {
+    const td=p[pi].tracks[trId];
+    td.stepCount=sc;
+    steps.forEach(s=>{
+      const ev=td.steps[s];
+      ev.on=true; ev.vel=vel;
+      if(note) ev.note=note;
+    });
+  }
+
+  if(name==='techno') {
+    project.name='Demo — Dark Techno'; project.bpm=128;
+    project.master={cutoff:12000,resonance:2.5,drive:.4};
+    on(0,'kick',[0,4,8,12]);
+    on(0,'hat',[2,6,10,14],null,.7);
+    on(0,'bass',[0,3,6,9,12,15],'C2');
+    on(0,'lead',[0,8],'C3',.5);
+    on(1,'kick',[0,4,8,12]);
+    on(1,'snare',[4,12]);
+    on(1,'hat',[2,4,6,10,12,14],null,.75);
+    on(1,'bass',[0,3,6,7,10,12,15],'Eb2');
+    on(2,'kick',[0,4,8,12]);
+    on(2,'snare',[4,12]);
+    on(2,'hat',[1,2,3,5,6,7,9,10,11,13,14,15],null,.63);
+    on(2,'bass',[0,2,3,6,8,11,12,15],'F2');
+    on(2,'lead',[0,4,8,12],'G2',.55);
+    on(3,'fx',[0,8]);
+    on(3,'pad',[0,8],'C3',.65);
+    on(3,'lead',[0,2,4,6,8,10,12,14],'C3',.4);
+  }
+  else if(name==='ambient') {
+    project.name='Demo — PSX Ambient'; project.bpm=92;
+    project.master={cutoff:6000,resonance:1,drive:.1};
+    project.timeline=[0,0,1,1,2,2,3,3,1,1,2,2,3,3,-1,-1];
+    on(0,'pad',[0,8],'C3',.55,32);
+    on(0,'lead',[0,16],'C3',.3,32);
+    on(0,'fx',[6,14]);
+    on(1,'pad',[0,8],'Eb3',.55,32);
+    on(1,'hat',[3,11],null,.35);
+    on(1,'lead',[0,16],'Eb3',.3,32);
+    on(2,'pad',[0,8],'G2',.5,32);
+    on(2,'bass',[0,10],'C2',.45);
+    on(3,'fx',[0,4,12]);
+    on(3,'pad',[0,16],'C2',.3,32);
+  }
+  else if(name==='horror') {
+    project.name='Demo — Horror Signal'; project.bpm=76;
+    project.master={cutoff:4000,resonance:5,drive:.8};
+    project.timeline=[0,0,1,1,2,2,3,3,2,2,3,3,4,4,-1,-1];
+    on(0,'fx',[0,7,13]);
+    on(0,'pad',[0,8],'C2',.45);
+    on(0,'lead',[0],'C1',.4,8);
+    on(1,'kick',[0,10],null,.8);
+    on(1,'fx',[5,12]);
+    on(1,'pad',[0,8],'Eb2',.5);
+    on(2,'snare',[6,14],null,.5);
+    on(2,'bass',[0,9],'C2',.55);
+    on(2,'lead',[0,4],'C1',.35,8);
+    on(3,'fx',[0,3,8,11,15]);
+    on(4,'kick',[0]);
+    on(4,'pad',[0],'Bb2',.6);
+  }
+  else if(name==='dnb') {
+    project.name='Demo — Broken DNB'; project.bpm=172;
+    project.master={cutoff:15000,resonance:1,drive:.3};
+    project.timeline=[0,1,0,2,0,1,3,2,0,1,0,2,4,4,5,-1];
+    on(0,'kick',[0,6,10]);
+    on(0,'snare',[4,12]);
+    on(0,'hat',[0,2,4,6,8,10,12,14],null,.55);
+    on(0,'bass',[0,3,6,10,13],'C2');
+    on(0,'lead',[0,4,8,12],'C3',.45);
+    on(1,'kick',[0,5,11]);
+    on(1,'snare',[4,12]);
+    on(1,'hat',[1,2,3,5,6,7,9,10,11,13,14,15],null,.48);
+    on(1,'bass',[0,2,7,9,12],'F2');
+    on(2,'kick',[0,7,10,15]);
+    on(2,'snare',[4,12]);
+    on(2,'fx',[14]);
+    on(2,'lead',[0,3,6,9],'Eb3',.4);
+    on(3,'pad',[0,8],'Eb3',.45,32);
+    on(4,'kick',[0,3,8,11]);
+    on(4,'snare',[4,12]);
+  }
+
+  renderAll();
+  status('Preset ' + name.toUpperCase() + ' cargado. Pulsa PLAY.', 'ok');
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   EVENT WIRING
+═══════════════════════════════════════════════════════════════════ */
+$('#playBtn').onclick = playStop;
+
+$('#modeBtn').onclick = () => {
+  mode = mode==='pattern' ? 'song' : 'pattern';
+  $('#modeBtn').textContent = 'MODO: '+(mode==='pattern'?'PATRÓN':'CANCIÓN');
+  $('#modeBtn').classList.toggle('active', mode==='song');
+  step=0; bar=0;
+  renderTimeline();
+  status(mode==='song'
+    ? 'Modo canción: reproduce el arranger.' : 'Modo patrón: repite el patrón activo.');
+};
+
+$('#loopBtn').onclick = () => {
+  songLoop = !songLoop;
+  $('#loopBtn').textContent = 'LOOP: '+(songLoop?'ON':'OFF');
+  $('#loopBtn').classList.toggle('loop-on', songLoop);
+  status('Loop: ' + (songLoop?'activado':'desactivado') + '.');
+};
+
+$$('.preset').forEach(b => b.onclick = () => setPreset(b.dataset.preset));
+['bpm','swing','cutoff','res','drive'].forEach(id => $('#'+id).oninput = setMasterFromUI);
+
+$('#mutate').onclick    = mutate;
+$('#humanize').onclick  = humanize;
+$('#clearPattern').onclick = clearPattern;
+$('#save').onclick      = save;
+$('#load').onclick      = load;
+$('#exportJson').onclick = exportJson;
+$('#importJsonBtn').onclick = () => $('#importFile').click();
+$('#importFile').onchange = e => e.target.files[0] && importJson(e.target.files[0]);
+$('#exportMidi').onclick = exportMidi;
+$('#exportWav').onclick  = exportWav;
+$('#exportStems').onclick = exportStems;
+$('#panic').onclick     = stop;
+$('#projectName').oninput = e => { project.name = e.target.value.trim() || project.name; };
+
+// Hidden per-track sample file input
+$('#sampleFile').onchange = e => {
+  const file = e.target.files[0];
+  if(file && _sampleTargetId) loadSampleFromFile(_sampleTargetId, file);
+  e.target.value = ''; // reset so same file can be reloaded
+};
+
+// Global drag-and-drop on body as fallback
+document.body.addEventListener('dragover', e => e.preventDefault());
+document.body.addEventListener('drop', e => e.preventDefault());
+
+/* ═══════════════════════════════════════════════════════════════════
+   BOOT
+═══════════════════════════════════════════════════════════════════ */
+rebuildSwing();
+setPreset('techno');
+
+})();
+</script>
+</body>
+</html>
